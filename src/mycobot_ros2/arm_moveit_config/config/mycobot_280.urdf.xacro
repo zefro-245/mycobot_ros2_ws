@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mycobot_280">
+
+  <!-- ================= ARGUMENTS ================= -->
+  <xacro:arg name="initial_positions_file" default="initial_positions.yaml"/>
+  <xacro:arg name="use_gazebo" default="false"/>
+
+  <!-- ================= ROBOT MODEL ================= -->
+  <xacro:include filename="$(find mycobot_description)/urdf/robots/mycobot_280_moveit.urdf.xacro"/>
+
+  <!-- ================= ROS2 CONTROL ================= -->
+  <xacro:include filename="mycobot_280.ros2_control.xacro"/>
+
+  <!-- ========== RViz / MoveIt (FakeSystem) ========== -->
+  <xacro:unless value="$(arg use_gazebo)">
+    <xacro:mycobot_280_ros2_control
+      name="FakeSystem"
+      initial_positions_file="$(arg initial_positions_file)"/>
+  </xacro:unless>
+
+  <!-- ========== Gazebo / Simulation (gz_ros2_control) ========== -->
+  <xacro:if value="$(arg use_gazebo)">
+    <xacro:mycobot_280_ros2_control
+      name="RobotSystem"
+      initial_positions_file="$(arg initial_positions_file)"/>
+  </xacro:if>
+
+</robot>
+
+
+

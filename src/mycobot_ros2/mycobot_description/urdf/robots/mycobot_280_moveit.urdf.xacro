@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="mycobot_280">
+
+  <!-- Base -->
+  <xacro:include filename="$(find mycobot_description)/urdf/mech/g_shape_base_v2_0.urdf.xacro"/>
+  <xacro:g_shape_base base_link="base_link" prefix=""/>
+
+  <!-- Arm -->
+  <xacro:include filename="$(find mycobot_description)/urdf/mech/mycobot_280_arm.urdf.xacro"/>
+  <xacro:mycobot_280_arm
+    base_link="base_link"
+    flange_link="link6_flange"
+    prefix="">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:mycobot_280_arm>
+
+  <!-- Gripper (optional but safe) -->
+  <xacro:include filename="$(find mycobot_description)/urdf/mech/adaptive_gripper.urdf.xacro"/>
+  <xacro:adaptive_gripper
+    parent="link6_flange"
+    prefix="">
+    <origin xyz="0 0 0.034" rpy="1.579 0 0"/>
+  </xacro:adaptive_gripper>
+
+</robot>

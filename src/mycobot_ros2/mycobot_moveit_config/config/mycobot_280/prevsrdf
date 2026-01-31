@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot name="mycobot_280">
+
+  <!-- World attachment -->
+  <virtual_joint
+    name="virtual_joint"
+    type="fixed"
+    parent_frame="world"
+    child_link="base_link"/>
+
+  <!-- ARM ONLY -->
+  <group name="arm">
+    <joint name="link1_to_link2"/>
+    <joint name="link2_to_link3"/>
+    <joint name="link3_to_link4"/>
+    <joint name="link4_to_link5"/>
+    <joint name="link5_to_link6"/>
+    <joint name="link6_to_link6_flange"/>
+    <joint name="link6_flange_to_gripper_base"/>
+  </group>
+
+  <!-- Tell MoveIt these joints are passive (mimic joints) -->
+    <passive_joint name="gripper_left3_to_gripper_left1"/>
+    <passive_joint name="gripper_base_to_gripper_left2"/>
+    <passive_joint name="gripper_base_to_gripper_right3"/>
+    <passive_joint name="gripper_base_to_gripper_right2"/>
+    <passive_joint name="gripper_right3_to_gripper_right1"/>
+
+  <!-- Named arm states (OK to keep) -->
+  <group_state name="home" group="arm">
+    <joint name="link1_to_link2" value="0"/>
+    <joint name="link2_to_link3" value="0"/>
+    <joint name="link3_to_link4" value="0"/>
+    <joint name="link4_to_link5" value="0"/>
+    <joint name="link5_to_link6" value="0"/>
+    <joint name="link6_to_link6_flange" value="0"/>
+  </group_state>
+
+  <group_state name="ready" group="arm">
+    <joint name="link1_to_link2" value="0"/>
+    <joint name="link2_to_link3" value="0"/>
+    <joint name="link3_to_link4" value="1.5708"/>
+    <joint name="link4_to_link5" value="1.5708"/>
+    <joint name="link5_to_link6" value="0"/>
+    <joint name="link6_to_link6_flange" value="0"/>
+  </group_state>
+
+</robot>

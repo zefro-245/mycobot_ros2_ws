@@ -1,0 +1,180 @@
+<?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <xacro:macro name="mycobot_ros2_control" params="prefix flange_link use_gazebo">
+        
+        <ros2_control name="RobotSystem" type="system">
+            <hardware>
+                <xacro:if value="${use_gazebo}">
+                    <plugin>ign_ros2_control/IgnitionSystem</plugin>
+                </xacro:if>
+                <xacro:unless value="${use_gazebo}">
+                    <plugin>mock_components/GenericSystem</plugin>
+                </xacro:unless>
+            </hardware>
+
+            <joint name="${prefix}link1_to_${prefix}link2">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link2_to_${prefix}link3">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link3_to_${prefix}link4">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link4_to_${prefix}link5">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link5_to_${prefix}link6">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link6_to_${prefix}${flange_link}">
+                <command_interface name="position">
+                    <param name="min">-3.05</param>
+                    <param name="max">3.05</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}gripper_controller">
+                <command_interface name="position">
+                    <param name="min">-0.7</param>
+                    <param name="max">0.15</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+        </ros2_control>
+
+        <xacro:if value="${use_gazebo}">
+            <gazebo>
+                <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+                    <ros>
+                        <remapping>/controller_manager/robot_description:=/robot_description</remapping>
+                    </ros>
+                    
+                    <parameters>/home/subhradeep/ros2_ws/install/mycobot_moveit_config/share/mycobot_moveit_config/config/mycobot_280/ros2_controllers.yaml</parameters>
+                </plugin>
+            </gazebo>
+        </xacro:if>
+
+    </xacro:macro>
+</robot>
+
+<!-- <?xml version="1.0" ?>
+<robot xmlns:xacro="http://wiki.ros.org/xacro">
+
+    <xacro:macro name="mycobot_ros2_control" params="prefix flange_link use_gazebo">
+        <ros2_control name="RobotSystem" type="system">
+            <hardware>
+                <xacro:if value="${use_gazebo}">
+                    <plugin>ign_ros2_control/IgnitionSystem</plugin>
+                </xacro:if>
+            </hardware>
+
+            <joint name="${prefix}link1_to_${prefix}link2">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link2_to_${prefix}link3">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link3_to_${prefix}link4">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link4_to_${prefix}link5">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link5_to_${prefix}link6">
+                <command_interface name="position">
+                    <param name="min">-2.879793</param>
+                    <param name="max">2.879793</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}link6_to_${prefix}${flange_link}">
+                <command_interface name="position">
+                    <param name="min">-3.05</param>
+                    <param name="max">3.05</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+            <joint name="${prefix}gripper_controller">
+                <command_interface name="position">
+                    <param name="min">-0.7</param>
+                    <param name="max">0.15</param>
+                </command_interface>
+                <state_interface name="position"/>
+                <state_interface name="velocity"/>
+            </joint>
+
+        </ros2_control>
+
+        <xacro:if value="${use_gazebo}">
+            <gazebo>
+                <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+                    <controller_manager_name>controller_manager</controller_manager_name>
+                </plugin>
+            </gazebo>
+        </xacro:if>
+    </xacro:macro>
+
+</robot> -->

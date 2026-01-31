@@ -1,0 +1,81 @@
+controller_manager:
+  ros__parameters:
+    update_rate: 100
+
+    joint_state_broadcaster:
+      type: joint_state_broadcaster/JointStateBroadcaster
+
+    arm_controller:
+      type: joint_trajectory_controller/JointTrajectoryController
+      joints:
+        - link1_to_link2
+        - link2_to_link3
+        - link3_to_link4
+        - link4_to_link5
+        - link5_to_link6
+        - link6_to_link6_flange
+      command_interfaces:
+        - position
+      state_interfaces:
+        - position
+        - velocity
+      # ADD THESE REQUIRED PARAMETERS:
+      action_monitor_rate: 20
+      allow_partial_joints_goal: false
+      open_loop_control: false
+      state_publish_rate: 50
+      constraints:
+        stopped_velocity_tolerance: 0.01
+        goal_time: 0.0
+
+    gripper_action_controller:
+      type: position_controllers/GripperActionController
+      joints: [gripper_controller]  # Change from 'joint' to 'joints'
+      command_interfaces:
+        - position
+      state_interfaces:
+        - position
+      # ADD THESE REQUIRED PARAMETERS:
+      action_monitor_rate: 20
+      allow_partial_joints_goal: false
+      open_loop_control: false
+      state_publish_rate: 50
+      # Gripper-specific
+      max_effort: 10.0
+      goal_tolerance: 0.01
+
+# controller_manager:
+#   ros__parameters:
+#     update_rate: 100
+
+#     joint_state_broadcaster:
+#       type: joint_state_broadcaster/JointStateBroadcaster
+
+#     arm_controller:
+#       type: joint_trajectory_controller/JointTrajectoryController
+#       joints:
+#         - link1_to_link2
+#         - link2_to_link3
+#         - link3_to_link4
+#         - link4_to_link5
+#         - link5_to_link6
+#         - link6_to_link6_flange
+#       command_interfaces:
+#         - position
+#       state_interfaces:
+#         - position
+#         - velocity
+
+#       constraints:
+#         stopped_velocity_tolerance: 0.01
+#         goal_time: 0.0
+
+#     gripper_action_controller:
+#       type: position_controllers/GripperActionController
+#       joint: gripper_controller
+
+#       command_interfaces:
+#         - position
+#       state_interfaces:
+#         - position
+

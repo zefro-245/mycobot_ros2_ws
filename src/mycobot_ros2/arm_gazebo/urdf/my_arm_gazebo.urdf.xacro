@@ -1,0 +1,59 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro" name="my_arm">
+
+  <!-- bring in the pure robot -->
+  <xacro:include filename="$(find arm_gazebo)/urdf/mycobot_280.urdf.xacro"/>
+
+  <!-- Gazebo ros2_control plugin -->
+  <gazebo>
+    <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
+      <parameters>$(find arm_gazebo)/config/ros2_controllers.yaml</parameters>
+    </plugin>
+  </gazebo>
+
+  <!-- ros2_control system -->
+  <ros2_control name="GazeboSystem" type="system">
+    <hardware>
+      <plugin>ign_ros2_control/IgnitionSystem</plugin>
+    </hardware>
+
+    <!-- POSITION CONTROL JOINTS -->
+    <joint name="link1_to_link2">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="link2_to_link3">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="link3_to_link4">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="link4_to_link5">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="link5_to_link6">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+    <joint name="link6_to_link6_flange">
+      <command_interface name="position"/>
+      <state_interface name="position"/>
+      <state_interface name="velocity"/>
+    </joint>
+
+  </ros2_control>
+
+</robot>
