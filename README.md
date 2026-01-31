@@ -109,21 +109,6 @@ Watch the MyCobot in action:
 - `build/`, `install/`, and `log/` directories are git-ignored
 - Make sure to source the workspace in every new terminal
 
-## 🐛 Troubleshooting
-
-### Common Issues
-
-1. **Missing dependencies**:
-   ```bash
-   rosdep install --from-paths src --ignore-src -r -y
-   ```
-
-2. **Gazebo not launching**:
-   - Ensure Gazebo is installed: `sudo apt install gazebo`
-   - Check ROS 2 Gazebo packages: `sudo apt install ros-humble-gazebo-ros-pkgs`
-
-3. **MoveIt not working**:
-   - Verify MoveIt 2 installation: `sudo apt install ros-humble-moveit`
 
 ## 🤝 Contributing
 
