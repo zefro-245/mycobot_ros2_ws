@@ -84,9 +84,7 @@ ros2 launch mycobot_moveit_config moveit_rviz.launch.py
 
 Watch the MyCobot in action:
 
-[![MyCobot ROS 2 Demo](https://img.youtube.com/vi/VIDEO_ID/0.jpg)]([https://drive.google.com/file/d/1uVbSuryEDiWIEvxfniRph-N-8lTyWHxC/view?usp=sharing](https://drive.google.com/file/d/1uVbSuryEDiWIEvxfniRph-N-8lTyWHxC/view?usp=sharing))
-
-*(Note: Replace with actual video thumbnail if available)*
+[[MyCobot ROS 2 Demo](https://drive.google.com/file/d/1uVbSuryEDiWIEvxfniRph-N-8lTyWHxC/view?usp=sharing)]
 
 ## 🎯 Features
 
@@ -130,10 +128,6 @@ Watch the MyCobot in action:
 ## 🤝 Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
-
-## 📄 License
-
-[Specify your license here]
 
 ## 👤 Author
 
