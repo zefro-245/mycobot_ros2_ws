@@ -2,7 +2,7 @@
 
 ![ROS 2 Humble](https://img.shields.io/badge/ROS%202-Humble-blue.svg)
 ![Ubuntu 22.04](https://img.shields.io/badge/Ubuntu-22.04-orange.svg)
-![Gazebo](https://img.shields.io/badge/Gazebo-Classic-green.svg)
+![Gazebo](https://img.shields.io/badge/Gazebo-Fortress-green.svg)
 ![MoveIt 2](https://img.shields.io/badge/MoveIt-2.0-purple.svg)
 
 This repository contains a complete ROS 2 workspace for the **MyCobot robotic arm**, featuring simulation, visualization, and motion planning capabilities.
