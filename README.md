@@ -76,7 +76,7 @@ ros2 launch arm_gazebo spawn_arm_gazebo.launch.py
 ### Launch RViz with MoveIt
 
 ```bash
-ros2 arm_moveit_config moveit_gazebo.launch.py
+ros2 launch arm_moveit_config moveit_gazebo.launch.py
 ```
 
 
