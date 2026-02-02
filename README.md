@@ -70,13 +70,13 @@ sudo apt install ros-humble-moveit ros-humble-gazebo-ros-pkgs
 ### Launch Gazebo Simulation
 
 ```bash
-ros2 launch mycobot_gazebo mycobot_gazebo.launch.py
+ros2 launch arm_gazebo spawn_arm_gazebo.launch.py
 ```
 
 ### Launch RViz with MoveIt
 
 ```bash
-ros2 launch mycobot_moveit_config moveit_rviz.launch.py
+ros2 arm_moveit_config moveit_gazebo.launch.py
 ```
 
 
